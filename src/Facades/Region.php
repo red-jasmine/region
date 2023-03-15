@@ -4,6 +4,9 @@ namespace RedJasmine\Region\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
+/**
+ * @mixin \RedJasmine\Region\Region
+ */
 class Region extends Facade
 {
     /**
