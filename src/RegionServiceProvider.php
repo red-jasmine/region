@@ -3,6 +3,7 @@
 namespace RedJasmine\Region;
 
 use Illuminate\Support\ServiceProvider;
+use RedJasmine\Region\Commands\CrawlDataCommand;
 
 class RegionServiceProvider extends ServiceProvider
 {
@@ -11,11 +12,11 @@ class RegionServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(): void
+    public function boot() : void
     {
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'red-jasmine');
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'red-jasmine');
-         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         // Publishing is only necessary when using the CLI.
@@ -29,9 +30,9 @@ class RegionServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register(): void
+    public function register() : void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/region.php', 'region');
+        $this->mergeConfigFrom(__DIR__ . '/../config/region.php', 'region');
 
         // Register the service the package provides.
         $this->app->singleton('region', function ($app) {
@@ -46,7 +47,7 @@ class RegionServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['region'];
+        return [ 'region' ];
     }
 
     /**
@@ -54,12 +55,12 @@ class RegionServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function bootForConsole(): void
+    protected function bootForConsole() : void
     {
         // Publishing the configuration file.
         $this->publishes([
-            __DIR__.'/../config/region.php' => config_path('region.php'),
-        ], 'region.config');
+                             __DIR__ . '/../config/region.php' => config_path('region.php'),
+                         ], 'region.config');
 
         // Publishing the views.
         /*$this->publishes([
@@ -77,6 +78,8 @@ class RegionServiceProvider extends ServiceProvider
         ], 'region.views');*/
 
         // Registering package commands.
-        // $this->commands([]);
+        $this->commands([
+                            CrawlDataCommand::class
+                        ]);
     }
 }

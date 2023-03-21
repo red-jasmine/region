@@ -4,15 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up() : void
     {
         Schema::create('regions', function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->primary()->comment('');
+            $table->unsignedBigInteger('id')->primary()->comment('ID');
             $table->unsignedBigInteger('parent_id')->comment('父级ID');
             $table->string('name')->nullable()->comment('名称');
             $table->string('full_name')->nullable()->comment('全称');
@@ -27,7 +26,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down() : void
     {
         Schema::dropIfExists('regions');
     }
