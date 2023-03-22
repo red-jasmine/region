@@ -312,7 +312,7 @@ class CrawlDataCommand extends Command
         //$this->toDB($provinces);
         foreach ($provinces as $province) {
             $cities = $this->cities($province);
-            //$this->toDB($cities);
+            $this->toDB($cities);
             foreach ($cities as $city) {
                 if ($city['name'] === '省直辖县级行政区划' || $city['name'] === '自治区直辖县级行政区划') {
                     $city['id'] = $province['id']; // 替换ID
@@ -329,7 +329,7 @@ class CrawlDataCommand extends Command
                     } else {
                         $streets = $this->villages($district);
                     }
-                    $this->toDB($streets);
+                    //$this->toDB($streets);
                     if ($level <= RegionLevel::STREET->value) {
                         continue;
                     }
@@ -369,8 +369,8 @@ class CrawlDataCommand extends Command
                                        'parent_id'     => (int)$list['parent_id'],
                                        'name'          => $list['name'],
                                        'level'         => $list['level'],
-                                       'pinyin_prefix' => Str::upper($pinyin->abbr($list['name'])[0]),
-                                       'pinyin'        => $pinyin->sentence($list['name'])
+                                       //'pinyin_prefix' => Str::upper($pinyin->abbr($list['name'])[0]),
+                                       //'pinyin'        => $pinyin->sentence($list['name'])
                                    ]
             );
 

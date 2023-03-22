@@ -16,10 +16,12 @@ class OptimizeCommand extends Command
 
     public function handle() : void
     {
-        foreach (Region::cursor() as $region) {
-            $pinyin                = app('pinyin');
-            $region->pinyin_prefix = Str::upper($pinyin->abbr($region->name)[0]);
-            $region->pinyin        = $pinyin->sentence($region->name);
+        $pinyinService = app('pinyin');
+        $cursor        = Region::where('pinyin', null)->orderByDesc('id')->cursor();
+        foreach ($cursor as $region) {
+            $pinyin                = $pinyinService->sentence($region->name);
+            $region->pinyin_prefix = Str::upper($pinyin[0]);
+            $region->pinyin        = $pinyin;
             $region->save();
         }
     }

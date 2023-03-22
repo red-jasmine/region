@@ -8,6 +8,7 @@
   - [数据源 - http://www.stats.gov.cn/sj/tjbz/tjyqhdmhcxhfdm/2022/index.html](http://www.stats.gov.cn/sj/tjbz/tjyqhdmhcxhfdm/2022/index.html)
   - [编码规范 - http://www.stats.gov.cn/sj/tjbz/gjtjbz/202302/t20230213_1902741.html](http://www.stats.gov.cn/sj/tjbz/gjtjbz/202302/t20230213_1902741.html)
 
+> 2022年度全国统计用区划代码和城乡划分代码更新维护的标准时点为2022年10月31。未包括我国台湾省、香港特别行政区和澳门特别行政区
 
 ## 城市等级
 
