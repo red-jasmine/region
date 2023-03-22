@@ -13,4 +13,8 @@ class Region extends Model
     public $timestamps = false;
     public $incrementing = false;
 
+    protected $fillable =[
+        'parent_id','id','name','level','pinyin','pinyin_prefix'
+    ];
+
 }

@@ -4,6 +4,7 @@ namespace RedJasmine\Region;
 
 use Illuminate\Support\ServiceProvider;
 use RedJasmine\Region\Commands\CrawlDataCommand;
+use RedJasmine\Region\Commands\OptimizeCommand;
 
 class RegionServiceProvider extends ServiceProvider
 {
@@ -79,7 +80,8 @@ class RegionServiceProvider extends ServiceProvider
 
         // Registering package commands.
         $this->commands([
-                            CrawlDataCommand::class
+                            CrawlDataCommand::class,
+                            OptimizeCommand::class,
                         ]);
     }
 }

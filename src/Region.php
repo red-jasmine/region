@@ -3,6 +3,7 @@
 namespace RedJasmine\Region;
 
 use Illuminate\Database\Eloquent\Collection;
+use RedJasmine\Region\Enums\RegionLevel;
 use RedJasmine\Region\Models\Region as RegionModel;
 
 class Region
@@ -41,7 +42,7 @@ class Region
     public function provinces() : array|Collection
     {
         return RegionModel::where('parent_id', 0)
-                          ->where('level', 0)
+                          ->where('level', RegionLevel::PROVINCE->value)
                           ->get();
     }
 
@@ -67,7 +68,7 @@ class Region
             return $this->children($province);
         } else {
             $name = $province;
-            return $query->where('full_name', (string)$name)->get();
+            return $query->where('name', (string)$name)->get();
         }
 
     }

@@ -3,11 +3,57 @@
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
 [![Build Status][ico-travis]][link-travis]
-[![StyleCI][ico-styleci]][link-styleci]
 
-This is where your description should go. Take a look at [contributing.md](contributing.md) to see a to do list.
+中华人民共和国行政区划（五级）：省级、地级、县级、乡级和村级
 
-## Installation
+## 数据来源
+- 国家统计局
+  - [数据源 - http://www.stats.gov.cn/sj/tjbz/tjyqhdmhcxhfdm/2022/index.html](http://www.stats.gov.cn/sj/tjbz/tjyqhdmhcxhfdm/2022/index.html)
+  - [编码规范 - http://www.stats.gov.cn/sj/tjbz/gjtjbz/202302/t20230213_1902741.html](http://www.stats.gov.cn/sj/tjbz/gjtjbz/202302/t20230213_1902741.html)
+
+
+## 城市等级
+
+|       级别        | Level |
+|:---------------:|:-----:|
+|       国家        |   0   |
+| 省、直辖市、自治区、特别行政区 |   1   |
+|  地级市、地区、自治州、盟   |   2   |
+|   县、县级市、区 、旗    |   3   |
+|      乡镇街道       |   4   |
+|    村、社区 、苏木     |   5   |
+
+
+##  数据下载
+
+
+| 数据                | CSV                                                 | SQL                                                 |
+|-------------------|-----------------------------------------------------|-----------------------------------------------------|
+| 省市区   三级          | [regions_level3.csv](./dist/csv/regions_level3.csv) | [regions_level3.sql](./dist/sql/regions_level3.sql) |
+| 省市区+乡镇街道    四级    | [regions_level4.csv](./dist/csv/regions_level4.csv) | [regions_level4.sql](./dist/sql/regions_level4.sql) |                                       |
+| 省市区+乡镇街道 +社区、村 五级 | [regions_level5.csv](./dist/csv/regions_level5.csv) | [regions_level5.sql](./dist/sql/regions_level5.sql) |                   |
+
+
+- sql
+```sql
+# 数据表
+CREATE TABLE `regions` (
+  `id` bigint unsigned NOT NULL,
+  `parent_id` bigint unsigned NOT NULL COMMENT '父级ID',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '名称',
+  `pinyin` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '拼音',
+  `pinyin_prefix` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '首字母',
+  `level` tinyint unsigned NOT NULL DEFAULT '0' COMMENT '等级',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB  COMMENT='行政区划表';
+```
+
+
+
+
+##  laravel 
+
+## 安装
 
 Via Composer
 
@@ -16,42 +62,13 @@ $ composer require red-jasmine/region
 ```
 
 ## Usage
+### Command
 
-## Change log
+```php
+# 爬取数据
+php artisan regions:crawl-data
+# 优化数据
+php artisan regions:optimize
 
-Please see the [changelog](changelog.md) for more information on what has changed recently.
-
-## Testing
-
-``` bash
-$ composer test
 ```
 
-## Contributing
-
-Please see [contributing.md](contributing.md) for details and a todolist.
-
-## Security
-
-If you discover any security related issues, please email liushoukun66@gmail.com instead of using the issue tracker.
-
-## Credits
-
-- [liushoukun][link-author]
-- [All Contributors][link-contributors]
-
-## License
-
-MIT. Please see the [license file](license.md) for more information.
-
-[ico-version]: https://img.shields.io/packagist/v/red-jasmine/region.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/red-jasmine/region.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/red-jasmine/region/master.svg?style=flat-square
-[ico-styleci]: https://styleci.io/repos/12345678/shield
-
-[link-packagist]: https://packagist.org/packages/red-jasmine/region
-[link-downloads]: https://packagist.org/packages/red-jasmine/region
-[link-travis]: https://travis-ci.org/red-jasmine/region
-[link-styleci]: https://styleci.io/repos/12345678
-[link-author]: https://github.com/red-jasmine
-[link-contributors]: ../../contributors

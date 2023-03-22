@@ -18,9 +18,9 @@ enum RegionLevel: int
             self::COUNTRY->value  => '国家',
             self::PROVINCE->value => '省',
             self::CITY->value     => '市',
-            self::DISTRICT->value => '县、区',
+            self::DISTRICT->value => '县、区、市',
             self::STREET->value   => '乡、镇、街道',
-            self::VILLAGE->value  => '村、村',
+            self::VILLAGE->value  => '村、社区',
         ];
     }
 }

@@ -14,7 +14,6 @@ return new class extends Migration {
             $table->unsignedBigInteger('id')->primary()->comment('ID');
             $table->unsignedBigInteger('parent_id')->comment('父级ID');
             $table->string('name')->nullable()->comment('名称');
-            $table->string('full_name')->nullable()->comment('全称');
             $table->string('pinyin')->nullable()->comment('拼音');
             $table->string('pinyin_prefix', 1)->nullable()->comment('首字母');
             $table->unsignedTinyInteger('level')->default(0)->comment('等级');

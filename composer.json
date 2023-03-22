@@ -13,7 +13,8 @@
     "keywords": ["Laravel", "Region"],
     "require": {
         "red-jasmine/support": "1.0.x-dev",
-        "paquettg/php-html-parser": "^2.2"
+        "paquettg/php-html-parser": "^2.2",
+        "overtrue/laravel-pinyin": "~4.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.0"
