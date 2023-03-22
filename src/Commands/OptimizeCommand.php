@@ -17,7 +17,7 @@ class OptimizeCommand extends Command
     public function handle() : void
     {
         $pinyinService = app('pinyin');
-        $cursor        = Region::where('pinyin', null)->orderByDesc('id')->cursor();
+        $cursor        = Region::where('pinyin', null)->cursor();
         foreach ($cursor as $region) {
             $pinyin                = $pinyinService->sentence($region->name);
             $region->pinyin_prefix = Str::upper($pinyin[0]);
