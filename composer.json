@@ -1,0 +1,43 @@
+{
+    "name": "red-jasmine/region",
+    "description": "region",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "liushoukun",
+            "email": "liushoukun66@gmail.com",
+            "homepage": "https://github.com/liushoukun66"
+        }
+    ],
+    "homepage": "https://github.com/red-jasmine/region",
+    "keywords": ["Laravel", "Region"],
+    "require": {
+        "red-jasmine/support": "1.0.x-dev",
+        "paquettg/php-html-parser": "^2.2",
+        "overtrue/laravel-pinyin": "~4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "RedJasmine\\Region\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "RedJasmine\\Region\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "RedJasmine\\Region\\RegionPackageServiceProvider"
+            ]
+        },
+        "branch-alias": {
+            "dev-master": "1.0.x-dev",
+            "dev-main": "1.0.x-dev"
+        }
+    }
+}
