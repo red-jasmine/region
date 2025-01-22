@@ -33,7 +33,7 @@ class RegionPackageServiceProvider extends ServiceProvider
      */
     public function register() : void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/region.php', 'region');
+        $this->mergeConfigFrom(__DIR__.'/../config/red-jasmine-region.php', 'red-jasmine-region');
 
 
     }
@@ -57,8 +57,8 @@ class RegionPackageServiceProvider extends ServiceProvider
     {
         // Publishing the configuration file.
         $this->publishes([
-                             __DIR__ . '/../config/region.php' => config_path('region.php'),
-                         ], 'region.config');
+            __DIR__.'/../config/red-jasmine-region.php' => config_path('red-jasmine-region.php'),
+                         ], 'red-jasmine-region.config');
 
         // Publishing the views.
         /*$this->publishes([
