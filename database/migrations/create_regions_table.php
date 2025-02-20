@@ -13,7 +13,6 @@ return new class extends Migration {
     {
         Schema::create(config('red-jasmine-region.tables.prefix', 'jasmine_').'regions', function (Blueprint $table) {
             $table->id();
-
             $table->string('code')->comment('编码');
             $table->string('name')->comment('名称');
             $table->string('parent_code')->nullable()->comment('编码');
